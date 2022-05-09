@@ -1,17 +1,21 @@
 module.exports = (sequelize, DataTypes) => {
-    const Appointment_type = sequelize.define("Appointment_type", {
+    const Branch = sequelize.define("Branch", {
         id: {
             type: DataTypes.INTEGER,
             primaryKey: true,
             autoIncrement: true
         },
-        description: {
+      branch_code:{
+        type: DataTypes.INTEGER,
+      },
+      name:{
+        type: DataTypes.STRING,
+      },
+   
+        row_state_id: {
             type: DataTypes.INTEGER,
         },
-        label: {
-            type: DataTypes.INTEGER,
-        },
-        urgency_level: {
+        row_version: {
             type: DataTypes.INTEGER,
         },
         created_by: {
@@ -20,13 +24,7 @@ module.exports = (sequelize, DataTypes) => {
         modified_by: {
             type: DataTypes.INTEGER,
         },
-        row_version: {
-            type: DataTypes.INTEGER,
-        },
-        row_state_id: {
-            type: DataTypes.INTEGER,
-        }
     });
 
-    return Appointment_type;
+    return Branch;
 };

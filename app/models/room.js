@@ -8,6 +8,9 @@ module.exports = (sequelize, DataTypes) => {
       room_no:{
         type: DataTypes.INTEGER,
       },
+      branch_code:{
+        type: DataTypes.INTEGER,
+      },
         row_state_id: {
             type: DataTypes.INTEGER,
         },
