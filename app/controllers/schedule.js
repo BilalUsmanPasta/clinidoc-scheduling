@@ -5,12 +5,18 @@ const moment = require("moment")
 const router = express.Router();
 const {  Room, Schedule_Type, Practitioners,Branch ,Schedules } = require("../models");
 const validationMiddleware = require('../middleware/validation/schedule');
+const validationRoomMiddleware = require('../middleware/validation/room');
 
 
-router.get("/rooms", async (req, res) => {
-  const { pageSize=10, pageNo=1} = req.query;
- 
+router.get("/rooms",validationRoomMiddleware.getRooms, async (req, res) => {
+  const { pageSize=10, pageNo=1,branch_code} = req.query;
+ let where={}
+if(branch_code){
+  where.branch_code=branch_code;
+}
+
 listOfRooms=  await Room.findAndCountAll({
+  where,
 pageSize,
 pageNo
 })
